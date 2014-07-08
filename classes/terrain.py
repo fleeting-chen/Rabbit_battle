@@ -6,7 +6,6 @@ MAP_WIDTH = 640
 MAP_HEIGHT = 480
 
 class Terrain(object):
-	def __init__(self):
-		self.width = MAP_WIDTH
-		self.height = MAP_HEIGHT
-		self.background = "../resources/images/grass.png"
+	width = MAP_WIDTH
+	height = MAP_HEIGHT
+	background = "../resources/images/grass.png"

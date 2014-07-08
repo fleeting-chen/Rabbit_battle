@@ -6,5 +6,6 @@ import bullet
 SHOT_INTERVAL = 1
 
 class Arrow(object):
+	interval = SHOT_INTERVAL
 	def __init__(self):
-		self.interval = SHOT_INTERVAL
+		self.last_shot_time = 0
