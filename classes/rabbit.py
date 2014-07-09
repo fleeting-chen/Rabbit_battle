@@ -10,12 +10,18 @@ from pygame.locals import *
 
 
 class Rabbit(object):
+	img = "resources/images/dude.png"
 	def __init__(self, id, position):
 		self.id = id
 		self.position = position
 		self.hp = 100
-		self.img = "resources/images/dude.png"
 		self.arrow = Arrow()
+		self.member = self.load_img()
+
+	def load_img(self):
+		pygame.init()
+		return pygame.image.load(self.img)
+		pygame.quit()
 
 	def check_position(self, position):
 		x, y = position.x, position.y
