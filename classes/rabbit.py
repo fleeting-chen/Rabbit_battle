@@ -5,6 +5,8 @@ __date__ = '14-7-7'
 import time
 from arrow import Arrow
 from terrain import Terrain
+import pygame
+from pygame.locals import *
 
 
 class Rabbit(object):
@@ -12,7 +14,7 @@ class Rabbit(object):
 		self.id = id
 		self.position = position
 		self.hp = 100
-		self.img = "../resources/images/dude.png"
+		self.img = "resources/images/dude.png"
 		self.arrow = Arrow()
 
 	def check_position(self, position):

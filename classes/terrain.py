@@ -8,4 +8,4 @@ MAP_HEIGHT = 480
 class Terrain(object):
 	width = MAP_WIDTH
 	height = MAP_HEIGHT
-	background = "../resources/images/grass.png"
+	background = "resources/images/grass.png"
