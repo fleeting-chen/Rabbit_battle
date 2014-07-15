@@ -2,7 +2,6 @@ __author__ = 'chenhao'
 __date__ = '14-7-7'
 #encoding:utf-8
 
-import time
 from arrow import Arrow
 from terrain import Terrain
 import pygame
@@ -21,7 +20,6 @@ class Rabbit(object):
 	def load_img(self):
 		pygame.init()
 		return pygame.image.load(self.img)
-		pygame.quit()
 
 	def check_position(self, position):
 		x, y = position.x, position.y
@@ -40,11 +38,6 @@ class Rabbit(object):
 	def died(self):
 		return self.hp <= 0
 
-	def shot(self):
-		if self.can_shot():
-			return True #shot
-
-	def can_shot(self):
-		if (int(time.time()) - self.arrow.last_shot_time) < self.arrow.interval:
-			return False
-		return True
+	def shot(self, position):
+		if self.arrow.can_shot():
+			self.arrow.shot(self.position, position)
