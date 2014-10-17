@@ -35,3 +35,9 @@ server
 client和server采用面向过程来写，暂时不确定并发多线程是否要用gevent来写
 
 其中地图和兔子以及一些动画效果采用pygame库来写
+
+2014.10.17日更新：
+重新改写了rabbit,bullet,terrain类，将一些通用的数据放入类的静态变量中
+去除了原来的arrow类
+重写了测试文件，现在为test_only中
+note：python中变量名其实特么是指针！如果是要变量相互赋值的话要用copy.deepcopy()！坑得一腿！

@@ -12,16 +12,18 @@ def main():
 	rabbit = Rabbit(1, [0,0])
 	terrain = Terrain()
 
-	# rabbit.img = pygame.image.load(rabbit.img)
-	# terrain.background = pygame.image.load(terrain.background)
+	terrain.member = pygame.image.load(terrain.background)
+	rabbit.member = pygame.image.load(rabbit.img)
 
-	# screen = pygame.display.set_mode((terrain.width, terrain.height))
-	# screen.fill(0)
+	screen = pygame.display.set_mode((terrain.width, terrain.height))
+	screen.fill(0)
 
 	while True:
-		terrain.draw()
+		for x in range(terrain.width / terrain.member.get_width() + 1):
+			for y in range(terrain.height / terrain.member.get_height() + 1):
+				screen.blit(terrain.member, (x * 100, y * 100))
 		playerpos = (rabbit.position[0] - rabbit.member.get_rect().width / 2, rabbit.position[1] - rabbit.member.get_rect().height / 2)
-		terrain.screen.blit(rabbit.member, playerpos)
+		screen.blit(rabbit.member, playerpos)
 		pygame.display.flip()
 
 		for event in pygame.event.get():
