@@ -8,9 +8,10 @@ class Bullet(object):
 	velocity = BULLET_VELOCITY
 	img = BULLET_IMG_DIR
 	member = None
-	def __init__(self, angle, position):
+	def __init__(self, id, angle, position):
+		self.owner = id
 		self.angle = angle
-		self.position= position
+		self.position = position
 
 	def move(self, x, y):
 		self.position[0] += x

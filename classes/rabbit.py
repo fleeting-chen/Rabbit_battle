@@ -19,6 +19,7 @@ class Rabbit(object):
 		self.position = position
 		self.hp = 100
 		self.last_shot_time = 0
+		self.angle = 0
 		# self.member = None
 
 	def check_position(self, position):
@@ -49,7 +50,8 @@ class Rabbit(object):
 			g_position: goal position
 		'''
 		if self.can_shot():
-			angle = math.atan2(g_position[1] - (self.position[1] + 32), g_position[0] - (self.position[0] + 26))
-			bullet = Bullet(angle, copy.deepcopy(self.position))
+			angle = math.atan2(g_position[1] - self.position[1], g_position[0] - self.position[0])
+			self.angle = angle
+			bullet = Bullet(copy.deepcopy(self.id), angle, copy.deepcopy(self.position))
 			Rabbit.bullets.append(bullet)
 			self.last_shot_time = time.time()
