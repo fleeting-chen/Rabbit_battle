@@ -21,7 +21,8 @@ def main():
 	rabbits.append(rabbit)
 	rabbit1 = Rabbit(2, [200,300])
 	rabbits.append(rabbit1)
-	rabbit.shot([200,300])
+	for i in range(1,20):
+		rabbit.shot([200,300])
 	rabbit1.shot([200,50])
 
 	screen = pygame.display.set_mode((Terrain.size[0], Terrain.size[1]))
@@ -33,6 +34,7 @@ def main():
 				screen.blit(Terrain.member, (x * 100, y * 100))
 
 		#draw rabbits
+		rbt_index = 0
 		for rbt in rabbits:
 			rbt_tmp = pygame.transform.rotate(Rabbit.member, 360 - rbt.angle * 57.29)
 			rbtpos = (rbt.position[0] - rbt_tmp.get_rect().width / 2, rbt.position[1] - rbt_tmp.get_rect().height / 2)
@@ -42,19 +44,23 @@ def main():
 			rbt_rect = pygame.Rect(Rabbit.member.get_rect())
 			rbt_rect.left = rbt.position[0] - Rabbit.member.get_rect().width / 2
 			rbt_rect.top = rbt.position[1] - Rabbit.member.get_rect().height / 2
-			index = 0
+			blt_index = 0
 			for blt in Rabbit.bullets:
 				if blt.owner != rbt.id:
 					blt_rect = pygame.Rect(Bullet.member.get_rect())
 					blt_rect.left = blt.position[0]
 					blt_rect.top = blt.position[1]
 					if rbt_rect.colliderect(blt_rect):
+						Rabbit.bullets.pop(blt_index)
 						rbt.got_damaged()
-						Rabbit.bullets.pop(index)
-					index += 1
+						#check the rabbit is died or not
+						if rbt.died():
+							rabbits.pop(rbt_index)
+					blt_index += 1
+			rbt_index += 1
 
 		#draw bullets
-		index = 0
+		blt_index = 0
 		for blt in Rabbit.bullets:
 			velx = math.cos(blt.angle) * Bullet.velocity
 			vely = math.sin(blt.angle) * Bullet.velocity
@@ -63,8 +69,8 @@ def main():
 							blt.position[0] > Terrain.size[0] + Bullet.member.get_rect().width or\
 							blt.position[1] < -Bullet.member.get_rect().height or\
 							blt.position[1] > Terrain.size[1] + Bullet.member.get_rect().height:
-				Rabbit.bullets.pop(index)
-			index += 1
+				Rabbit.bullets.pop(blt_index)
+			blt_index += 1
 			for projectile in Rabbit.bullets:
 				blt_tmp = pygame.transform.rotate(Bullet.member, 360 - projectile.angle * 57.29)
 				screen.blit(blt_tmp, (projectile.position[0], projectile.position[1]))

@@ -40,8 +40,8 @@ class Rabbit(object):
 		return self.hp <= 0
 
 	def can_shot(self):
-		if (int(time.time()) - self.last_shot_time) < SHOT_INTERVAL:
-			return False
+		# if (int(time.time()) - self.last_shot_time) < SHOT_INTERVAL:
+		# 	return False
 		return True
 
 	def shot(self, g_position):
@@ -53,5 +53,6 @@ class Rabbit(object):
 			angle = math.atan2(g_position[1] - self.position[1], g_position[0] - self.position[0])
 			self.angle = angle
 			bullet = Bullet(copy.deepcopy(self.id), angle, copy.deepcopy(self.position))
+			print bullet
 			Rabbit.bullets.append(bullet)
 			self.last_shot_time = time.time()
