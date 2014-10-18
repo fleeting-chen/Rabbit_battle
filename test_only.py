@@ -21,7 +21,7 @@ def main():
 	rabbits.append(rabbit)
 	rabbit1 = Rabbit(2, [200,300])
 	rabbits.append(rabbit1)
-	for i in range(1,20):
+	for i in range(0,10):
 		rabbit.shot([200,300])
 	rabbit1.shot([200,50])
 

@@ -1,0 +1,22 @@
+message Position{
+	required int32 x = 1;
+	required int32 y = 2;
+}
+
+enum Status{
+	Idle = 1
+	Move = 2;
+	Shot = 3;
+	Dead = 4;
+}
+
+message Rabbit{
+	required int32 id = 1;
+	required Position position = 2;
+	required int32 hp = 3;
+	required float angle = 4;
+	required Status status = 5;
+
+	optional float last_shot_time = 6;
+	optional Position target_position = 7;
+}

@@ -41,3 +41,16 @@ client和server采用面向过程来写，暂时不确定并发多线程是否�
 去除了原来的arrow类
 重写了测试文件，现在为test_only中
 note：python中变量名其实特么是指针！如果是要变量相互赋值的话要用copy.deepcopy()！坑得一腿！
+
+
+2014.10.18日更新：
+1、完成了Rabbit的move函数，增加了Rabbit的移动速度为5
+2、添加了server.py和client.py两个文件（未完成）
+3、添加了用于rabbit信息交互的消息模板文件rabbit.proto(还不完善)
+4、测试文件现在可运行射击等简单示例
+5、目前打算是server负责维护数据和交互，client用户呈现，AI相对独立（这个暂未想好）
+
+protobuf使用：
+下好包后解压，然后在python文件夹中运行python setup.py build,成功后再运行python setup.py install
+安装成功后用protoc.exe文件编译写好的proto文件，然后运行protoc filename.proto --python_out /outputdir
+成功后会在指定的文件夹下产生一个py文件
