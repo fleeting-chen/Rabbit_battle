@@ -54,3 +54,10 @@ protobuf使用：
 下好包后解压，然后在python文件夹中运行python setup.py build,成功后再运行python setup.py install
 安装成功后用protoc.exe文件编译写好的proto文件，然后运行protoc filename.proto --python_out /outputdir
 成功后会在指定的文件夹下产生一个py文件
+
+
+2014.10.20日更新
+1、稍微完善了rabbit.proto的定义
+2、修改了server和client的思路，现在分为server(client)和manage两个类，manage负责连接，server(client)负责数据交互，并且使用gevent并发
+3、增加了base_server.py基类，用于提供基本的数据操作
+4、增加了message.py文件，用户对数据进行封装

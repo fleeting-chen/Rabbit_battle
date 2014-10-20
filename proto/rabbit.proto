@@ -4,7 +4,7 @@ message Position{
 }
 
 enum Status{
-	Idle = 1
+	Idle = 1;
 	Move = 2;
 	Shot = 3;
 	Dead = 4;
@@ -19,4 +19,8 @@ message Rabbit{
 
 	optional float last_shot_time = 6;
 	optional Position target_position = 7;
+}
+
+message Rabbits{
+	repeated Rabbit rabbit = 1;
 }

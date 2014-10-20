@@ -17,23 +17,6 @@ PORT = 9000
 BUFSIZE = 1024
 ADDR = (HOST, PORT)
 
-# client = socket(AF_INET, SOCK_STREAM)
-# client.connect(ADDR)
-# msg = 'start'
-# client.sendall(msg)
-# rabbits = []
-# while True:
-# 	rec = client.recv(BUFSIZE)
-# 	if not rec:
-# 		continue
-# 	msgs = rabbit_pb2.Rabbits()
-# 	msgs.ParseFromString(rec)
-# 	print msgs
-	# for rbt in msgs.rabbit:
-	# 	rabbits.append(protobuf_2_rabbit(rbt))
-	# print rabbits
-# client.close()
-
 class BattleClient(BaseServer):
 	def on_data(self, data):
 		print data
